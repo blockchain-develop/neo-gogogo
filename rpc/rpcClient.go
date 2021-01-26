@@ -54,7 +54,21 @@ func (n *RpcClient) makeRequest(method string, params []interface{}, out interfa
 func (n *RpcClient) ClaimGas(address string) ClaimGasResponse {
 	response := ClaimGasResponse{}
 	params := []interface{}{address}
-	_ = n.makeRequest("claimgas", params, &response)
+	err := n.makeRequest("claimgas", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
+		if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -62,7 +76,14 @@ func (n *RpcClient) ClaimGas(address string) ClaimGasResponse {
 func (n *RpcClient) GetAccountState(address string) GetAccountStateResponse {
 	response := GetAccountStateResponse{}
 	params := []interface{}{address}
-	_ = n.makeRequest("getaccountstate", params, &response)
+	err := n.makeRequest("getaccountstate", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -70,14 +91,28 @@ func (n *RpcClient) GetAccountState(address string) GetAccountStateResponse {
 func (n *RpcClient) GetApplicationLog(txId string) GetApplicationLogResponse {
 	response := GetApplicationLogResponse{}
 	params := []interface{}{txId}
-	_ = n.makeRequest("getapplicationlog", params, &response)
+	err := n.makeRequest("getapplicationlog", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetAssetState(assetId string) GetAssetStateResponse {
 	response := GetAssetStateResponse{}
 	params := []interface{}{assetId}
-	_ = n.makeRequest("getassetstate", params, &response)
+	err := n.makeRequest("getassetstate", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -85,42 +120,84 @@ func (n *RpcClient) GetAssetState(assetId string) GetAssetStateResponse {
 func (n *RpcClient) GetBalance(assetId string) GetBalanceResponse {
 	response := GetBalanceResponse{}
 	params := []interface{}{assetId}
-	_ = n.makeRequest("getbalance", params, &response)
+	err := n.makeRequest("getbalance", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetBestBlockHash() GetBestBlockHashResponse {
 	response := GetBestBlockHashResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getbestblockhash", params, &response)
+	err := n.makeRequest("getbestblockhash", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetBlockByHash(blockHash string) GetBlockResponse {
 	response := GetBlockResponse{}
 	params := []interface{}{blockHash, 1}
-	_ = n.makeRequest("getblock", params, &response)
+	err := n.makeRequest("getblock", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetBlockByIndex(index uint32) GetBlockResponse {
 	response := GetBlockResponse{}
 	params := []interface{}{index, 1}
-	_ = n.makeRequest("getblock", params, &response)
+	err := n.makeRequest("getblock", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetBlockCount() GetBlockCountResponse {
 	response := GetBlockCountResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getblockcount", params, &response)
+	err := n.makeRequest("getblockcount", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetBlockHeaderByHash(blockHash string) GetBlockHeaderResponse {
 	response := GetBlockHeaderResponse{}
 	params := []interface{}{blockHash, 1}
-	_ = n.makeRequest("getblockheader", params, &response)
+	err := n.makeRequest("getblockheader", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -132,27 +209,55 @@ func (n *RpcClient) GetBlockHeaderByIndex(index uint32) GetBlockHeaderResponse {
 func (n *RpcClient) GetBlockHash(index uint32) GetBlockHashResponse {
 	response := GetBlockHashResponse{}
 	params := []interface{}{index}
-	_ = n.makeRequest("getblockhash", params, &response)
+	err := n.makeRequest("getblockhash", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetClaimable(address string) GetClaimableResponse {
 	response := GetClaimableResponse{}
 	params := []interface{}{address}
-	_ = n.makeRequest("getclaimable", params, &response)
+	err := n.makeRequest("getclaimable", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetConnectionCount() GetConnectionCountResponse {
 	response := GetConnectionCountResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getconnectioncount", params, &response)
+	err := n.makeRequest("getconnectioncount", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 func (n *RpcClient) GetContractState(scriptHash string) GetContractStateResponse {
 	response := GetContractStateResponse{}
 	params := []interface{}{scriptHash}
-	_ = n.makeRequest("getcontractstate", params, &response)
+	err := n.makeRequest("getcontractstate", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -160,7 +265,14 @@ func (n *RpcClient) GetContractState(scriptHash string) GetContractStateResponse
 func (n *RpcClient) GetNep5Balances(address string) GetNep5BalancesResponse {
 	response := GetNep5BalancesResponse{}
 	params := []interface{}{address}
-	_ = n.makeRequest("getnep5balances", params, &response)
+	err := n.makeRequest("getnep5balances", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -168,7 +280,14 @@ func (n *RpcClient) GetNep5Balances(address string) GetNep5BalancesResponse {
 func (n *RpcClient) GetNep5Transfers(address string) GetNep5TransfersResponse {
 	response := GetNep5TransfersResponse{}
 	params := []interface{}{address}
-	_ = n.makeRequest("getnep5balances", params, &response)
+	err := n.makeRequest("getnep5balances", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -176,91 +295,182 @@ func (n *RpcClient) GetNep5Transfers(address string) GetNep5TransfersResponse {
 func (n *RpcClient) GetNewAddress() GetNewAddressResponse {
 	response := GetNewAddressResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getnewaddress", params, &response)
+	err := n.makeRequest("getnewaddress", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetRawMemPool() GetRawMemPoolResponse {
 	response := GetRawMemPoolResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getrawmempool", params, &response)
+	err := n.makeRequest("getrawmempool", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetRawTransaction(txid string) GetRawTransactionResponse {
 	response := GetRawTransactionResponse{}
 	params := []interface{}{txid, 1}
-	_ = n.makeRequest("getrawtransaction", params, &response)
+	err := n.makeRequest("getrawtransaction", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetStorage(scripthash string, key string) GetStorageResponse {
 	response := GetStorageResponse{}
 	params := []interface{}{scripthash, key}
-	_ = n.makeRequest("getstorage", params, &response)
+	err := n.makeRequest("getstorage", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetTransactionHeight(txid string) GetTransactionHeightResponse {
 	response := GetTransactionHeightResponse{}
 	params := []interface{}{txid}
-	_ = n.makeRequest("gettransactionheight", params, &response)
+	err := n.makeRequest("gettransactionheight", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetTxOut(txid string, index int) GetTxOutResponse {
 	response := GetTxOutResponse{}
 	params := []interface{}{txid, index}
-	_ = n.makeRequest("gettxout", params, &response)
+	err := n.makeRequest("gettxout", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetPeers() GetPeersResponse {
 	response := GetPeersResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getpeers", params, &response)
+	err := n.makeRequest("getpeers", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetUnclaimedGas() GetUnclaimedGasResponse {
 	response := GetUnclaimedGasResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getunclaimedgas", params, &response)
+	err := n.makeRequest("getunclaimedgas", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetUnclaimed(address string) GetUnclaimedResponse {
 	response := GetUnclaimedResponse{}
 	params := []interface{}{address}
-	_ = n.makeRequest("getunclaimed", params, &response)
+	err := n.makeRequest("getunclaimed", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetUnspents(adddress string) GetUnspentsResponse {
 	response := GetUnspentsResponse{}
 	params := []interface{}{adddress}
-	_ = n.makeRequest("getunspents", params, &response)
+	err := n.makeRequest("getunspents", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetValidators() GetValidatorsResponse {
 	response := GetValidatorsResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getvalidators", params, &response)
+	err := n.makeRequest("getvalidators", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetVersion() GetVersionResponse {
 	response := GetVersionResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getversion", params, &response)
+	err := n.makeRequest("getversion", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetWalletHeight() GetWalletHeightResponse {
 	response := GetWalletHeightResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getwalletheight", params, &response)
+	err := n.makeRequest("getwalletheight", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -268,7 +478,14 @@ func (n *RpcClient) GetWalletHeight() GetWalletHeightResponse {
 func (n *RpcClient) ImportPrivKey(wif string) ImportPrivKeyResponse {
 	response := ImportPrivKeyResponse{}
 	params := []interface{}{wif}
-	_ = n.makeRequest("importprivkey", params, &response)
+	err := n.makeRequest("importprivkey", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -280,21 +497,42 @@ func (n *RpcClient) InvokeFunction(scriptHash string, method string, checkWitnes
 	} else {
 		params = []interface{}{scriptHash, method, checkWitnessHashes}
 	}
-	_ = n.makeRequest("invokefunction", params, &response)
+	err := n.makeRequest("invokefunction", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) InvokeScript(scriptInHex string, checkWitnessHashes string) InvokeScriptResponse {
 	response := InvokeScriptResponse{}
 	params := []interface{}{scriptInHex, checkWitnessHashes}
-	_ = n.makeRequest("invokescript", params, &response)
+	err := n.makeRequest("invokescript", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) ListPlugins() ListPluginsResponse {
 	response := ListPluginsResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("listplugins", params, &response)
+	err := n.makeRequest("listplugins", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -302,7 +540,14 @@ func (n *RpcClient) ListPlugins() ListPluginsResponse {
 func (n *RpcClient) ListAddress() ListAddressResponse {
 	response := ListAddressResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("listaddress", params, &response)
+	err := n.makeRequest("listaddress", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -310,14 +555,28 @@ func (n *RpcClient) ListAddress() ListAddressResponse {
 func (n *RpcClient) SendFrom(assetId string, from string, to string, amount uint32, fee float32, changeAddress string) SendFromResponse {
 	response := SendFromResponse{}
 	params := []interface{}{assetId, from, to, amount, fee, changeAddress}
-	_ = n.makeRequest("sendfrom", params, &response)
+	err := n.makeRequest("sendfrom", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) SendRawTransaction(rawTransactionInHex string) SendRawTransactionResponse {
 	response := SendRawTransactionResponse{}
 	params := []interface{}{rawTransactionInHex, 1}
-	_ = n.makeRequest("sendrawtransaction", params, &response)
+	err := n.makeRequest("sendrawtransaction", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -325,7 +584,14 @@ func (n *RpcClient) SendRawTransaction(rawTransactionInHex string) SendRawTransa
 func (n *RpcClient) SendToAddress(assetId string, to string, amount uint32, fee float32, changeAddress string) SendToAddressResponse {
 	response := SendToAddressResponse{}
 	params := []interface{}{assetId, to, amount, fee, changeAddress}
-	_ = n.makeRequest("sendtoaddress", params, &response)
+	err := n.makeRequest("sendtoaddress", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
@@ -334,41 +600,83 @@ func (n *RpcClient) SendToAddress(assetId string, to string, amount uint32, fee 
 func (n *RpcClient) SubmitBlock(blockHex string) SubmitBlockResponse {
 	response := SubmitBlockResponse{}
 	params := []interface{}{blockHex}
-	_ = n.makeRequest("submitblock", params, &response)
+	err := n.makeRequest("submitblock", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) ValidateAddress(address string) ValidateAddressResponse {
 	response := ValidateAddressResponse{}
 	params := []interface{}{address}
-	_ = n.makeRequest("validateaddress", params, &response)
+	err := n.makeRequest("validateaddress", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetProof(stateroot, contractScriptHash, storeKey string) CrossChainProofResponse {
 	response := CrossChainProofResponse{}
 	params := []interface{}{stateroot, contractScriptHash, storeKey}
-	_ = n.makeRequest("getproof", params, &response)
+	err := n.makeRequest("getproof", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetStateHeight() StateHeightResponse {
 	response := StateHeightResponse{}
 	params := []interface{}{}
-	_ = n.makeRequest("getstateheight", params, &response)
+	err := n.makeRequest("getstateheight", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetStateRootByIndex(blockHeight uint32) StateRootResponse {
 	response := StateRootResponse{}
 	params := []interface{}{blockHeight}
-	_ = n.makeRequest("getstateroot", params, &response)
+	err := n.makeRequest("getstateroot", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
 
 func (n *RpcClient) GetStateRootByHash(blockHash string) StateRootResponse {
 	response := StateRootResponse{}
 	params := []interface{}{blockHash}
-	_ = n.makeRequest("getstateroot", params, &response)
+	err := n.makeRequest("getstateroot", params, &response)
+	if err != nil {
+		response.ErrorResponse = ErrorResponse{
+			Error: RpcError{
+				Message: err.Error(),
+			},
+		}
+	}
 	return response
 }
